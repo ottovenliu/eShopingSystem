@@ -9,8 +9,25 @@ SwiperCore.use([Pagination, Navigation]);
 })
 export class HeaderComponent {
   config: SwiperOptions = {
-    slidesPerView: 8,
+    slidesPerView: 3,
     spaceBetween: 50,
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+      // when window width is >= 480px
+      480: {
+        slidesPerView: 6,
+        spaceBetween: 30,
+      },
+      // when window width is >= 640px
+      640: {
+        slidesPerView: 8,
+        spaceBetween: 40,
+      },
+    },
   };
 
   /**
@@ -32,4 +49,3 @@ export class HeaderComponent {
     { categoryID: 10, categoryName: 'Category 10' },
   ];
 }
-// bootstrapApplication(HeaderComponent);
