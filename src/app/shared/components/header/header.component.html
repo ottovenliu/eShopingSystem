@@ -18,14 +18,28 @@
     </div>
   </div>
   <div class="header-lv2 w-full flex items-center justify-center">
-    <div class="searchingBox px-4 w-full relative">
+    <div class="searchingBox w-full relative">
       <input
         type="text"
         class="w-full h-8 outline-none focus:border-1 border-primary-orange text-primary-black"
       />
-      <button type="submit" class="absolute top-0 right-[3%]">
+      <button type="submit" class="absolute top-0 right-0">
         <i class="fa-solid fa-magnifying-glass w-8 h-8 bg-primary-orange p-2"></i>
       </button>
     </div>
+  </div>
+  <div class="header-lv3 w-full">
+    <!-- <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div *ngFor="let categoryItem of categories" class="swiper-slide">
+          <button type="button">{{ categoryItem.categoryName }}</button>
+        </div>
+      </div>
+    </div> -->
+    <swiper [config]="config">
+      <ng-template swiperSlide *ngFor="let categoryItem of categories"
+        ><button type="button">{{ categoryItem.categoryName }}</button></ng-template
+      >
+    </swiper>
   </div>
 </div>

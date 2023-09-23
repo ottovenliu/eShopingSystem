@@ -7,6 +7,12 @@ EX:
 |--套件名稱-套件應用版本(或所使用的樣式版本)-簡要功能
 @import"swiper/style"
 */
+// Swiper ^8.4.7 輪播套件
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+
 
 // PrimeNg ^16.0.2 樣式庫
 // @import "primeng/resources/themes/lara-light-blue/theme.css";

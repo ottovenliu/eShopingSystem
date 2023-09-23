@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../../components/header/header.component';
+import { HeaderModule } from '../../components/header/header.module';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent],
+  imports: [CommonModule, RouterOutlet, HeaderModule],
   templateUrl: './index-layout.component.html',
   styleUrls: ['./index-layout.component.scss'],
 })

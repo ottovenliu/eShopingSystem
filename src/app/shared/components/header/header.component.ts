@@ -1,10 +1,35 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { categoryItem } from '../../types/system-setting/system';
+import SwiperCore, { Pagination, Navigation, SwiperOptions } from 'swiper';
+SwiperCore.use([Pagination, Navigation]);
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './header.component.html',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  config: SwiperOptions = {
+    slidesPerView: 8,
+    spaceBetween: 50,
+  };
+
+  /**
+   *商品種類列表
+   *
+   * @type {Array<categoryItem>}
+   * @memberof HeaderComponent
+   */
+  categories: Array<categoryItem> = [
+    { categoryID: 1, categoryName: 'Category 1' },
+    { categoryID: 2, categoryName: 'Category 2' },
+    { categoryID: 3, categoryName: 'Category 3' },
+    { categoryID: 4, categoryName: 'Category 4' },
+    { categoryID: 5, categoryName: 'Category 5' },
+    { categoryID: 6, categoryName: 'Category 6' },
+    { categoryID: 7, categoryName: 'Category 7' },
+    { categoryID: 8, categoryName: 'Category 8' },
+    { categoryID: 9, categoryName: 'Category 9' },
+    { categoryID: 10, categoryName: 'Category 10' },
+  ];
+}
+// bootstrapApplication(HeaderComponent);
