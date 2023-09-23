@@ -1,10 +1,11 @@
-// INFO: 進行系統共用參數宣告
+/*
+* INFO: 進行系統共用參數宣告
+*/
 :root {
   --primary-black: #222831;
   --primary-gray: #393e46;
   --primary-orange: #f96d00;
   --primary-white: #f2f2f2;
 }
-
 @tailwind base;
 @tailwind utilities;
