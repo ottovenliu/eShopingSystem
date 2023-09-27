@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { UPDATE_LOADING_STATUS, UPDATE_MENU_STATUS } from '../actions/layout.action';
 import { SlideMenuStatus } from 'src/app/shared/types/layout-setting/layout';
 
+export const layoutReducerKey = 'layout';
 export const initialState: State = {
   Loading: false,
   SlideMenuStatus: {
@@ -10,7 +11,6 @@ export const initialState: State = {
     isMini: false,
   },
 };
-
 export interface State {
   Loading: boolean;
   SlideMenuStatus: SlideMenuStatus;
