@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromPagesReducers from '../../../core/store/reducers';
+import * as fromPagesActions from '../../../core/store/actions';
+
 import {
   selectLayoutLoading,
   selectLayoutState,
@@ -33,5 +35,10 @@ export class ShoppingHomeComponent implements OnInit {
     this.isLoading$.subscribe((res) => {
       console.log(res);
     });
+    this.store.dispatch(
+      fromPagesActions.LayoutActions.UPDATE_LOADING_STATUS({
+        Status: false,
+      })
+    );
   }
 }
