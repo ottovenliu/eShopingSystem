@@ -1,14 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as fromPagesReducers from '../../../core/store/reducers';
-import * as fromPagesActions from '../../../core/store/actions';
-
-import {
-  selectLayoutLoading,
-  selectLayoutState,
-} from 'src/app/core/store/selector/layout.selector';
+import { selectLayoutLoading } from 'src/app/core/store/selector/layout.selector';
+import { GET_USER_LIST } from 'src/app/core/store/actions/user.actions';
+import { UPDATE_LOADING_STATUS } from 'src/app/core/store/actions/layout.action';
+import { selectUserList } from 'src/app/core/store/selector/user.selector';
 // import * as fromPagesActions from '../../../core/store/actions';
 @Component({
   standalone: true,
@@ -17,28 +14,21 @@ import {
   styleUrls: ['./shopping-home.component.scss'],
 })
 export class ShoppingHomeComponent implements OnInit {
-  private storeR = inject(Store<fromPagesReducers.State>);
   private store = inject(Store);
   private destroy$ = new Subject<void>();
-  loading$: Observable<boolean> = this.storeR
-    .select((x) => x.layout.Loading)
-    .pipe(takeUntil(this.destroy$));
   isLoading$ = this.store.select(selectLayoutLoading);
-
+  userList$ = this.store.select(selectUserList);
   ngOnInit(): void {
-    this.store
-      .select(selectLayoutState) // 指定 Selector
-      .subscribe((data) => console.log(data));
-    this.store
-      .select(selectLayoutLoading) // 指定 Selector
-      .subscribe((data) => console.log(data));
-    this.isLoading$.subscribe((res) => {
-      console.log(res);
-    });
     this.store.dispatch(
-      fromPagesActions.LayoutActions.UPDATE_LOADING_STATUS({
+      UPDATE_LOADING_STATUS({
         Status: false,
       })
     );
+    this.store.dispatch(GET_USER_LIST());
+    this.userList$.subscribe((res) => console.log(res));
+  }
+  getUserList(): void {
+    console.log('sad');
+    this.store.dispatch(GET_USER_LIST());
   }
 }

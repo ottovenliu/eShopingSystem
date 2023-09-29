@@ -80,7 +80,9 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 6837
+            "port": 6837,
+            "browserTarget": "todo:build",
+            "proxyConfig": "src/proxy.config.json"
           }
         },
         "extract-i18n": {
@@ -123,6 +125,7 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": "19d22d56-788c-4569-815c-92347b2e10ba"
   }
 }

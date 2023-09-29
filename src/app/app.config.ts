@@ -4,6 +4,10 @@ import { routes } from './core/routes/app.routes';
 import { provideStore } from '@ngrx/store';
 import { reducer } from './core/store/reducers';
 import { layoutReducerKey } from './core/store/reducers/layout.reducers';
+import { provideHttpClient } from '@angular/common/http';
+import { userReducerKey } from './core/store/reducers/user.reducers';
+import { effects } from './core/store/effects';
+import { provideEffects } from '@ngrx/effects';
 // import { effects } from './core/store/effects';
 // import { provideEffects } from '@ngrx/effects';
 
@@ -12,9 +16,9 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore({
       [layoutReducerKey]: reducer[layoutReducerKey],
-      // detail: reducer.detail,
-      // systemConfig: reducer.systemConfig,
+      [userReducerKey]: reducer[userReducerKey],
     }),
-    // provideEffects(effects),
+    provideHttpClient(),
+    provideEffects(effects),
   ],
 };

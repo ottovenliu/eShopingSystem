@@ -1,4 +1,3 @@
-// import { UserEffects } from './user.effects';
-// import { SystemConfigEffects } from './system-config.effects';
+import { UserEffects } from './user.effects';
 
-// export const effects = [UserEffects, SystemConfigEffects];
+export const effects = [UserEffects];

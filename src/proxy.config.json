@@ -1,0 +1,10 @@
+{
+  "/dummyApi": {
+    "target": "https://dummyapi.io/data/v1/",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/dummyApi": ""
+    }
+  }
+}

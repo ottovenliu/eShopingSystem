@@ -1,2 +1,5 @@
-{{ loading$ | async | json }}
 {{ isLoading$ | async | json }}
+<button (click)="getUserList()">http</button>
+<div *ngIf="userList$ | async as userList">
+  {{ userList | json }}
+</div>
