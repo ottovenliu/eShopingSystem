@@ -8,8 +8,6 @@ import { provideHttpClient } from '@angular/common/http';
 import { userReducerKey } from './core/store/reducers/user.reducers';
 import { effects } from './core/store/effects';
 import { provideEffects } from '@ngrx/effects';
-// import { effects } from './core/store/effects';
-// import { provideEffects } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
