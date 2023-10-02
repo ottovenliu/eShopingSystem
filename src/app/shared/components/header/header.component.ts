@@ -8,6 +8,7 @@ SwiperCore.use([Pagination, Navigation]);
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
+  sidebarVisible = true;
   config: SwiperOptions = {
     slidesPerView: 3,
     spaceBetween: 50,

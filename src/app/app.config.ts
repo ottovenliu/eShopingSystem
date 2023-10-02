@@ -8,6 +8,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { userReducerKey } from './core/store/reducers/user.reducers';
 import { effects } from './core/store/effects';
 import { provideEffects } from '@ngrx/effects';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,8 @@ export const appConfig: ApplicationConfig = {
       [layoutReducerKey]: reducer[layoutReducerKey],
       [userReducerKey]: reducer[userReducerKey],
     }),
-    provideHttpClient(),
     provideEffects(effects),
+    provideHttpClient(),
+    provideAnimations(),
   ],
 };
