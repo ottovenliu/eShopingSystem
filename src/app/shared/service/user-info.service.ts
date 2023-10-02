@@ -3,7 +3,7 @@ import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { GET_USER_LIST } from 'src/app/core/store/actions/user.actions';
-import { EnvironmentSettings } from '../environments/environments.local';
+import { EnvironmentSettings } from '../environments/environment.local';
 
 @Injectable({
   providedIn: 'root',

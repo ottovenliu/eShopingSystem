@@ -29,16 +29,15 @@
     </div>
   </div>
   <div class="header-lv3 w-full">
-    <!-- <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div *ngFor="let categoryItem of categories" class="swiper-slide">
-          <button type="button">{{ categoryItem.categoryName }}</button>
-        </div>
-      </div>
-    </div> -->
     <swiper [config]="config">
       <ng-template swiperSlide *ngFor="let categoryItem of categories"
-        ><button type="button">{{ categoryItem.categoryName }}</button></ng-template
+        ><button
+          type="button"
+          [routerLink]="['/eShopping/ShoppingList']"
+          [queryParams]="{ category: categoryItem['categoryID'] }"
+        >
+          {{ categoryItem.categoryName }}
+        </button></ng-template
       >
     </swiper>
   </div>
