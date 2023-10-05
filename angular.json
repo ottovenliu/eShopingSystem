@@ -78,7 +78,12 @@
               "browserTarget": "E_Shopping_System:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 6837,
+            "browserTarget": "todo:build",
+            "proxyConfig": "src/proxy.config.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -104,11 +109,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "e0078ff1-d0ab-41fc-a077-10eeea5ed7e4"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ],
+    "analytics": "19d22d56-788c-4569-815c-92347b2e10ba"
   }
 }
