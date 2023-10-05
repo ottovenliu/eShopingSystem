@@ -47,6 +47,8 @@ jobs:
         run: npm install
       - name: NPM Install Angular
         run: npm install -g @angular/cli@16 > /dev/null
+      - name: NPM ci
+        run: npm ci
       - name: NPM build
         run: npm run build
 
