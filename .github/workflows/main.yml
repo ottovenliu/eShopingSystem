@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [master]
 jobs:
-  build:
+  init-install:
     # using Ubuntu
     runs-on: ubuntu-latest
     defaults:
@@ -26,3 +26,9 @@ jobs:
         run: npm install -g @angular/cli@16 > /dev/null
       - name: Lint
         run: npm run lint
+    build:
+      needs: [init-install]
+      steps:
+        - name: NPM build
+          run: npm run build
+
