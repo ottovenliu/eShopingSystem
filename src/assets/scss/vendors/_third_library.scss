@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+INFO: 僅供各種樣式載入，請勿於此進行樣式的宣告
+載入第三方套件樣式或既有功能樣式，必須於import之前註解註明套件名稱、版本與套件簡要功能
+EX:
+// Swiper ^9.4.1 輪播套件
+|--套件名稱-套件應用版本(或所使用的樣式版本)-簡要功能
+@import"swiper/style"
+*/
+// Swiper ^8.4.7 輪播套件
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+
+
+// PrimeNg ^16.0.2 樣式庫
+// @import "primeng/resources/themes/lara-light-blue/theme.css";
+// @import "primeng/resources/primeng.css";
+// @import "primeicons/primeicons.css";
+
+// Tailwinds ^3.3.2 樣式庫
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";

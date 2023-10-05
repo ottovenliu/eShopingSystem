@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+echo "[CHECK] Pre-commit Bad Smell Check"
+echo "[CHECK] linting"
+  ng lint --max-warnings 0
+if [ $? != 0 ]; then
+  echo "[FAILED] eslint caught error"
+  exit 1
+fi
+echo "[SUCCESS] eslint passed"
+echo "[CHECK] prettier code"
+npx pretty-quick --staged
+echo "[SUCCESS] prettier ended"
+echo "[FINISH] pre-commit ended"
+exit $?
