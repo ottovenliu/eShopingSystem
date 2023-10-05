@@ -1,7 +1,9 @@
 <div class="header py-4 text-primary-white">
   <div class="header-lv1 w-full mb-default flex items-center justify-between">
     <div class="flex items-center">
-      <i class="fa-solid fa-bars text-primary-white"></i>
+      <button (click)="toggleSliderMenu()">
+        <p class="fa-solid fa-bars text-primary-white cursor-pointer"></p>
+      </button>
       <div class="w-40 px-4 invert overflow-hidden">
         <img src="../../../../assets/image/logo.png" alt="" />
       </div>
@@ -29,17 +31,32 @@
     </div>
   </div>
   <div class="header-lv3 w-full">
-    <!-- <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div *ngFor="let categoryItem of categories" class="swiper-slide">
-          <button type="button">{{ categoryItem.categoryName }}</button>
-        </div>
-      </div>
-    </div> -->
     <swiper [config]="config">
       <ng-template swiperSlide *ngFor="let categoryItem of categories"
-        ><button type="button">{{ categoryItem.categoryName }}</button></ng-template
+        ><button
+          type="button"
+          [routerLink]="['/eShopping/ShoppingList']"
+          [queryParams]="{ category: categoryItem['categoryID'] }"
+        >
+          {{ categoryItem.categoryName }}
+        </button></ng-template
       >
     </swiper>
   </div>
+</div>
+<p-sidebar [(visible)]="sidebarVisible" [showCloseIcon]="false">
+  <ng-template pTemplate="header"
+    ><div class="w-full flex justify-between">
+      Category
+      <button (click)="toggleSliderMenu()">
+        <p class="fa-solid fa-xmark cursor-pointer"></p>
+      </button></div
+  ></ng-template>
+  <ng-template pTemplate="content">Body Content</ng-template>
+  <ng-template pTemplate="footer">Footer Content</ng-template>
+</p-sidebar>
+<div *ngIf="isLoading$ | async as Loading">
+  <p-blockUI [blocked]="Loading">
+    <p-progressSpinner></p-progressSpinner>
+  </p-blockUI>
 </div>

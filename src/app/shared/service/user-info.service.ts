@@ -3,6 +3,7 @@ import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { GET_USER_LIST } from 'src/app/core/store/actions/user.actions';
+import { EnvironmentSettings } from '../environments/environment.local';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class UserInfoService {
   private httpService = inject(HttpService);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private getAPIUserList(): Observable<any> {
-    return this.httpService.getFormDummy('/dummyApi/user', null);
+    return this.httpService.getFormDummy(`${EnvironmentSettings.DUMMY_BASE_URL}v1/user`, null);
   }
   actionGetUserList(): void {
     this.store.dispatch(GET_USER_LIST());
