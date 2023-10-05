@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { categoryItem } from '../../types/system-setting/system';
 import SwiperCore, { Pagination, Navigation, SwiperOptions } from 'swiper';
+import { Store } from '@ngrx/store';
+import { selectLayoutLoading } from 'src/app/core/store/selector/layout.selector';
 SwiperCore.use([Pagination, Navigation]);
 @Component({
   selector: 'app-header',
@@ -8,6 +10,15 @@ SwiperCore.use([Pagination, Navigation]);
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
+  private store = inject(Store);
+  isLoading$ = this.store.select(selectLayoutLoading);
+  /**
+   * sidebarVisible 是否呈現側邊欄位
+   *
+   * @memberof HeaderComponent
+   */
+  sidebarVisible = false;
+
   config: SwiperOptions = {
     slidesPerView: 3,
     spaceBetween: 50,
@@ -29,7 +40,23 @@ export class HeaderComponent {
       },
     },
   };
-
+  /**
+   * listen window width
+   * @param event
+   */
+  @HostListener('window:resize', ['$event'])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private onResize(event: any): void {
+    if (event.target.innerWidth < 660) {
+      this.hideSlider();
+    }
+  }
+  hideSlider(): void {
+    this.sidebarVisible = false;
+  }
+  toggleSliderMenu(): void {
+    this.sidebarVisible = !this.sidebarVisible;
+  }
   /**
    *商品種類列表
    *
