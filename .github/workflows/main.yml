@@ -21,8 +21,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: NPM Install
-          run: npm install
+        run: npm install
       - name: NPM Install Angular
-          run: npm install -g @angular/cli@16 > /dev/null
+        run: npm install -g @angular/cli@16 > /dev/null
       - name: Lint
-          run: npm run lint
+        run: npm run lint
