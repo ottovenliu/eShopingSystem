@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [master]
 jobs:
-  init-install:
+  lint:
     # using Ubuntu
     runs-on: ubuntu-latest
     defaults:
@@ -27,12 +27,26 @@ jobs:
       - name: Lint
         run: npm run lint
   build:
-    needs: [init-install]
+    needs: [lint]
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+      - uses: actions/cache@v3 # this allows for re-using node_modules caching, making builds a bit faster.
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: NPM Install
+        run: npm install
+      - name: NPM Install Angular
+        run: npm install -g @angular/cli@16 > /dev/null
       - name: NPM build
         run: npm run build
 
